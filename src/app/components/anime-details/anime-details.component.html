@@ -1,0 +1,50 @@
+<div>
+    <div *ngIf="currentAnime.id" class="edit-form">
+        <h4>Anime</h4>
+        <form>
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" required [(ngModel)]="currentAnime.title" name="title" />
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <input class="form-control" id="genre" required [(ngModel)]="currentAnime.genre" name="genre" />
+            </div>
+
+            <div class="form-group">
+                <label for="synopsis">Synopsis</label>
+                <textarea class="form-control" id="synopsis" required [(ngModel)]="currentAnime.synopsis" name="synopsis" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="aired">Date du premier épisode</label>
+                <input class="form-control" id="aired" required [(ngModel)]="currentAnime.aired" name="aired" />
+            </div>
+
+            <div class="form-group">
+                <label for="ended">Date du dernier épisde</label>
+                <input class="form-control" id="ended" required [(ngModel)]="currentAnime.ended" name="ended" />
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Évaluation</label>
+                <input class="form-control" id="rating" required [(ngModel)]="currentAnime.rating" name="rating" />
+            </div>
+        </form>
+
+        <button class="badge bg-danger" (click)="deleteAnime()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge bg-success" (click)="updateAnime()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentAnime.id">
+        <br />
+        <p>Cannot access this Anime...</p>
+    </div>
+</div>

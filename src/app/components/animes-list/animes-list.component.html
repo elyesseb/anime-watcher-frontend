@@ -1,0 +1,52 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Rercherche par titre" [(ngModel)]="title" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+                  <i class="fas fa-search"></i>
+        </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Animes List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let anime of animes; let i = index" [class.active]="i == currentIndex" (click)="setActiveAnime(anime, i)">
+                {{ anime.title }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentAnime.id">
+            <h4>Anime</h4>
+            <div>
+                <label><strong>Title:</strong></label> {{ currentAnime.title }}
+            </div>
+            <div>
+                <label><strong>Genre:</strong></label> {{ currentAnime.genre }}
+            </div>
+            <div>
+                <label><strong>Synopsis:</strong></label> {{ currentAnime.synopsis }}
+            </div>
+            <div>
+                <label><strong>Aired:</strong></label> {{ currentAnime.aired }}
+            </div>
+            <div>
+                <label><strong>Ended:</strong></label> {{ currentAnime.ended }}
+            </div>
+            <div>
+                <label><strong>Rating:</strong></label> {{ currentAnime.rating }}
+            </div>
+
+            <a class="badge bg-warning text-dark" routerLink="/animes/{{ currentAnime.id }}">
+        Edit
+      </a>
+        </div>
+
+        <div *ngIf="!currentAnime">
+            <br />
+            <p>Please click on a Anime...</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<form>
+    <div>
+        <div class="submit-form">
+            <div *ngIf="!submitted">
+                <div class="form-group">
+                    <label for="image_background">Veuillez choisir une image</label>
+                    <input type="file" class="form-control-file" id="image_background">
+                </div>
+                <div class="form-group">
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title" required [(ngModel)]="anime.title" name="title" ngModel required />
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input class="form-control" id="genre" required [(ngModel)]="anime.genre" name="genre" />
+                </div>
+
+                <div class="form-group">
+                    <label for="synopsis">Synopsis</label>
+                    <textarea class="form-control" id="synopsis" required [(ngModel)]="anime.synopsis" name="synopsis" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="aired">Date du premier épisode</label>
+                    <input class="form-control" id="aired" required [(ngModel)]="anime.aired" name="aired" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ended">Date du dernier épisde</label>
+                    <input class="form-control" id="ended" required [(ngModel)]="anime.ended" name="ended" />
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Évaluation</label>
+                    <input class="form-control" id="rating" required [(ngModel)]="anime.rating" name="rating" />
+                </div>
+            </div>
+
+            <button (click)="saveAnime()" class="btn btn-success">Submit</button>
+
+            <div *ngIf="submitted">
+                <h4>Anime was submitted successfully!</h4>
+                <button class="btn btn-success" (click)="newAnime()">Add</button>
+            </div>
+        </div>
+    </div>
+</form>
