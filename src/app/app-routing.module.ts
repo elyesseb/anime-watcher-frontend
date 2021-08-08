@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'animes', component: AnimesListComponent },
   { path: 'animes/:id', component: AnimeDetailsComponent },
-  { path: 'add', component: AddAnimeComponent }
+  { path: 'add', component: AddAnimeComponent },
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
