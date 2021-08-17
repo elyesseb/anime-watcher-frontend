@@ -11,12 +11,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: '', canActivate : [AuthGuard] , children : [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
@@ -24,7 +26,10 @@ const routes: Routes = [
   { path: 'animes', component: AnimesListComponent },
   { path: 'animes/:id', component: AnimeDetailsComponent },
   { path: 'add', component: AddAnimeComponent },
-  {path: '**', component: PageNotFoundComponent}
+  ]},
+  {path: 'not-found', component: PageNotFoundComponent},
+  { path:'**', redirectTo:'/not-found'}
+
 ];
 
 @NgModule({
