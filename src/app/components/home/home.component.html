@@ -1,5 +1,23 @@
-<div class="container">
-    <header class="jumbotron">
-        <p>{{ content }}</p>
-    </header>
-</div>
+<div class="row pt-3">
+    <div class="col-lg-4 col-md-6 without_padding" *ngFor="let anime of animes">
+        <a>
+            <div class="panel panel-s4i panel-no-border">
+                <div class="panel-body text-left inside_liste">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="td_affiche_liste">
+                                    <img class="affiche_liste" src="http://localhost:8080/files/{{anime.fileDB.id}}" alt="{{anime.title}}">
+                                </td>
+                                <td class="liste-content">
+                                    <h3>{{anime.title}}</h3>
+                                    <h5>Genre : {{anime.genre}}</h5>
+                                    <h5>Date : {{anime.aired}}</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </a>
+    </div>

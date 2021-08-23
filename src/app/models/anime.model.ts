@@ -1,3 +1,5 @@
+import { FileDB } from "./file-db.model";
+
 export class Anime {
   id?: any;
   title?: string;
@@ -6,4 +8,5 @@ export class Anime {
   aired?: string;
   ended?: string;
   rating?: any;
+  fileDB?: any;
 }

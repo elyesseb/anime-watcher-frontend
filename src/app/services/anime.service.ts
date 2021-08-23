@@ -17,7 +17,7 @@ export class AnimeService {
     return this.http.get<Anime[]>(`${baseUrl}/list`);
   }
 
-  get(id: any): Observable<Anime> {
+  get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/getAnimeById/${id}`);
   }
 

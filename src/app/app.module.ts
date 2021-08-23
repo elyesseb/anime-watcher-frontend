@@ -29,6 +29,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeDetailsComponent } from './components/home-details/home-details.component';
 
 const materialModules = [
   MatCardModule,
@@ -62,6 +64,8 @@ const materialModules = [
     BoardUserComponent,
     UploadImagesComponent,
     PageNotFoundComponent,
+    FooterComponent,
+    HomeDetailsComponent,
   ],
   imports: [
     BrowserModule,

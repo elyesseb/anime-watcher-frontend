@@ -1,10 +1,17 @@
 <div>
     <div *ngIf="currentAnime.id" class="edit-form">
         <h4>Anime</h4>
-        <form>
-            <div class="form-group">
-                <label for="title">Titre</label>
-                <input type="text" class="form-control" id="title" required [(ngModel)]="currentAnime.title" name="title" />
+        <form class="list-group-item container-cards">
+            <div class="row">
+                <div class="form-group col">
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title" required [(ngModel)]="currentAnime.title" name="title" />
+                </div>
+
+                <div class="form-group col">
+                    <label for="rating">Évaluation</label>
+                    <input class="form-control" id="rating" required [(ngModel)]="currentAnime.rating" name="rating" />
+                </div>
             </div>
 
             <div class="form-group">
@@ -16,35 +23,34 @@
                 <label for="synopsis">Synopsis</label>
                 <textarea class="form-control" id="synopsis" required [(ngModel)]="currentAnime.synopsis" name="synopsis" rows="3"></textarea>
             </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="aired">Date du premier épisode</label>
+                    <input class="form-control" id="aired" required [(ngModel)]="currentAnime.aired" name="aired" />
+                </div>
 
-            <div class="form-group">
-                <label for="aired">Date du premier épisode</label>
-                <input class="form-control" id="aired" required [(ngModel)]="currentAnime.aired" name="aired" />
+                <div class="form-group col">
+                    <label for="ended">Date du dernier épisode</label>
+                    <input class="form-control" id="ended" required [(ngModel)]="currentAnime.ended" name="ended" />
+                </div>
             </div>
+            <div *ngIf="message" class="alert alert-success" role="alert">{{ message }}</div>
 
-            <div class="form-group">
-                <label for="ended">Date du dernier épisde</label>
-                <input class="form-control" id="ended" required [(ngModel)]="currentAnime.ended" name="ended" />
-            </div>
-
-            <div class="form-group">
-                <label for="rating">Évaluation</label>
-                <input class="form-control" id="rating" required [(ngModel)]="currentAnime.rating" name="rating" />
-            </div>
         </form>
 
-        <button class="badge bg-danger" (click)="deleteAnime()">
-      Delete
+        <button class="badge badge-danger" (click)="deleteAnime()">
+      Supprimer
     </button>
-
-        <button type="submit" class="badge bg-success" (click)="updateAnime()">
-      Update
+        <button type="submit" class="badge badge-warning ml-1" (click)="updateAnime()">
+      Mettre à jour
     </button>
-        <p>{{ message }}</p>
     </div>
+
+
+
 
     <div *ngIf="!currentAnime.id">
         <br />
-        <p>Cannot access this Anime...</p>
+        <p>Impossible d'accéder à l'anime...</p>
     </div>
 </div>

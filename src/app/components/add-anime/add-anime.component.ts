@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Anime } from 'src/app/models/anime.model';
 import { AnimeService } from 'src/app/services/anime.service';
+import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
   selector: 'app-add-anime',
@@ -16,9 +17,10 @@ export class AddAnimeComponent implements OnInit {
     ended: '',
     rating: '',
   };
+
   submitted = false;
 
-  constructor(private animeService: AnimeService) {}
+  constructor(private animeService: AnimeService, private fileUploadService: FileUploadService) {}
 
   ngOnInit(): void {}
 
@@ -29,7 +31,7 @@ export class AddAnimeComponent implements OnInit {
       synopsis: this.anime.synopsis,
       aired: this.anime.aired,
       ended: this.anime.ended,
-      rating: this.anime.rating,
+      rating: this.anime.rating
     };
 
     this.animeService.create(data).subscribe(

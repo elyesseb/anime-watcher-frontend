@@ -18,6 +18,7 @@ export class AnimeDetailsComponent implements OnInit {
     ended: '',
     rating: ''
   };
+
   message = '';
 
   constructor(
@@ -26,7 +27,6 @@ export class AnimeDetailsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.message = '';
     this.getAnime(this.route.snapshot.params.id);
   }
 
@@ -49,7 +49,7 @@ export class AnimeDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.message = response.message ? response.message : 'This anime was updated successfully!';
+          this.message = response.message ? response.message : 'Cet anime a été mis à jour avec succès !';
         },
         error => {
           console.log(error);

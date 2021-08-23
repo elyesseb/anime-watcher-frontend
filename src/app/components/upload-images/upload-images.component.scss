@@ -3,7 +3,10 @@
 }
 
 .progress {
-    width: 50px;
+    width: 70px;
+    height: 2rem;
+    display: block;
+    color: #0A3D62;
 }
 
 .mat-input-element {
@@ -25,10 +28,12 @@
     height: auto !important;
     background: transparent;
     padding: 0;
+    color: white;
 }
 
 .mat-toolbar-single-row button {
     width: 100px;
+    color: white;
 }
 
 .mat-form-field {
