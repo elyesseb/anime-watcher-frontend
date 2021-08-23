@@ -4,7 +4,7 @@
             <input type="text" class="form-control" placeholder="Rercherche par titre" [(ngModel)]="title" />
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary bk-color" type="button" (click)="searchTitle()">
-                  <i class="fas fa-search"></i>
+          <i class="fas fa-search"></i>
         </button>
             </div>
         </div>
@@ -40,11 +40,11 @@
                     <label><strong>Évaluation:</strong></label> {{ currentAnime.rating }}
                 </div>
                 <a class="badge bg-warning text-dark" routerLink="/animes/{{ currentAnime.id }}">
-        Modifier
-      </a>
+          Modifier
+        </a>
                 <a class="badge bg-primary text-white ml-2" routerLink="/images/{{ currentAnime.id }}">
-        Ajouter une image
-      </a>
+          Ajouter une image
+        </a>
             </div>
         </div>
 

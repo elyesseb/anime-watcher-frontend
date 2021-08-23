@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Anime } from 'src/app/models/anime.model';
 import { AnimeService } from 'src/app/services/anime.service';
 import { UserService } from 'src/app/services/user.service';
-import { FileUploadService } from '../../services/file-upload.service';
-import { FileDB } from '../../models/file-db.model';
 
 @Component({
   selector: 'app-home',
@@ -20,8 +18,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private animeService: AnimeService,
-    private UploadService: FileUploadService
+    private animeService: AnimeService
   ) {}
 
   ngOnInit(): void {
@@ -41,12 +38,6 @@ export class HomeComponent implements OnInit {
     this.animeService.getAll().subscribe(
       (data) => {
         this.animes = data;
-
-        // let array = data.map((x) => x.fileDB);
-        // array.forEach((element) => {
-        //   console.log(element.id);
-        // });
-
       },
       (error) => {
         console.log(error);
@@ -61,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   setActiveAnime(anime: Anime, index: number): void {
-    // this.currentAnime = anime;
+    this.currentAnime = anime;
     this.currentIndex = index;
   }
 

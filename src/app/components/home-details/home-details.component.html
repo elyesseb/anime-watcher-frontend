@@ -1,1 +1,49 @@
-<p>home-details works!</p>
+<div id="page-wrapper">
+    <section class="fiche panel panel-s4i">
+        <div class="panel-body">
+            <div class="panel-body">
+                <div id="dle-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>{{currentAnime.title}}</h1>
+                        </div>
+                        <div class="row ml-auto mr-2">
+                            <p>{{currentAnime.rating}}</p>
+                            <i class="fas fa-star ml-2"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <img src="http://localhost:8080/files/{{currentAnime.fileDB.id}}" alt="{{currentAnime.title}}" style="width: 100%; max-width:500px;">
+                        </div>
+                        <div class="col-sm-6 fiche_info_div">
+                            <p class="fiche_info_p">Genres: {{currentAnime.genre}}</p>
+                            <p>Synopsis :</p>
+                            <div class="synopsis">
+                                <p>{{currentAnime.synopsis}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                    </div>
+
+                    <div class="row">
+                        <div style="margin: 20px; text-align: center;">
+
+                            <div class="p2w-wrapper">
+                                <input id="tmdb_id" type="hidden" value="745980">
+                                <input id="extension_title" type="hidden" value="Louloute">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row" id="commentaires">
+                        <!-- TODO -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

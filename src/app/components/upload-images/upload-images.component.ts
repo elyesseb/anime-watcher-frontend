@@ -5,7 +5,6 @@ import { FileUploadService } from 'src/app/services/file-upload.service';
 import { Anime } from '../../models/anime.model';
 import { AnimeService } from '../../services/anime.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FileDB } from '../../models/file-db.model';
 
 @Component({
   selector: 'app-upload-images',
@@ -21,7 +20,6 @@ export class UploadImagesComponent implements OnInit {
     aired: '',
     ended: '',
     rating: '',
-    fileDB: []
   };
 
   selectedFiles?: FileList;

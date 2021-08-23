@@ -14,11 +14,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
-import { componentFactoryName } from '@angular/compiler';
+import { HomeDetailsComponent } from './components/home-details/home-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'home/:id', component: HomeDetailsComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', canActivate : [AuthGuard] , children : [

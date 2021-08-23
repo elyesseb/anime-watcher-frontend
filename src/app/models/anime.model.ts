@@ -1,5 +1,3 @@
-import { FileDB } from "./file-db.model";
-
 export class Anime {
   id?: any;
   title?: string;

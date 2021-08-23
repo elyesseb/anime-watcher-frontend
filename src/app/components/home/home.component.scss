@@ -1,3 +1,11 @@
+a {
+    text-decoration: none;
+}
+
+.search-bar {
+    width: 100%;
+}
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
@@ -16,7 +24,6 @@
 .panel {
     margin-bottom: 20px;
     background-color: #fff;
-    border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
     box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
@@ -65,6 +72,11 @@ img {
     color: #fff;
 }
 
+.input-group-append .btn,
+.input-group-prepend .btn {
+    background-color: #0A3D62;
+}
+
 @media (min-width: 1200px) and (max-width: 1290px) {
     .liste-content {
         padding-top: 10px;
@@ -77,6 +89,17 @@ img {
         vertical-align: top;
         text-align: left;
         color: #fff;
+    }
+    .search-bar {
+        width: 48%;
+    }
+}
+
+@media (max-width: 350px) {
+    .liste-content {
+        &--date {
+            display: none;
+        }
     }
 }
 

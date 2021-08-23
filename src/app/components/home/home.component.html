@@ -1,6 +1,16 @@
 <div class="row pt-3">
+    <div class="col-md-12">
+        <div class="input-group mb-3 search-bar">
+            <input type="text" class="form-control" placeholder="Rercherche par titre" [(ngModel)]="title" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary bk-color" type="button" (click)="searchTitle()">
+          <i class="fas fa-search"></i>
+        </button>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-4 col-md-6 without_padding" *ngFor="let anime of animes">
-        <a>
+        <a routerLink="/home/{{ anime.id }}">
             <div class="panel panel-s4i panel-no-border">
                 <div class="panel-body text-left inside_liste">
                     <table>
@@ -12,7 +22,7 @@
                                 <td class="liste-content">
                                     <h3>{{anime.title}}</h3>
                                     <h5>Genre : {{anime.genre}}</h5>
-                                    <h5>Date : {{anime.aired}}</h5>
+                                    <h5 class="liste-content--date">Date de sortie : {{anime.aired}}</h5>
                                 </td>
                             </tr>
                         </tbody>
