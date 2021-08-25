@@ -58,5 +58,4 @@ export class AnimesListComponent implements OnInit {
           console.log(error);
         });
   }
-
 }

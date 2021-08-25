@@ -17,7 +17,7 @@
                             <img src="http://localhost:8080/files/{{currentAnime.fileDB.id}}" alt="{{currentAnime.title}}" style="width: 100%; max-width:500px;">
                         </div>
                         <div class="col-sm-6 fiche_info_div">
-                            <p class="fiche_info_p">Genres: {{currentAnime.genre}}</p>
+                            <p class="fiche_info_p">Genres : {{currentAnime.genre}}</p>
                             <p>Synopsis :</p>
                             <div class="synopsis">
                                 <p>{{currentAnime.synopsis}}</p>
@@ -41,6 +41,9 @@
                     </div>
                     <div class="row" id="commentaires">
                         <!-- TODO -->
+                        <div *ngIf="isLoggedIn">
+                            <p>Wesh</p>
+                        </div>
                     </div>
                 </div>
             </div>

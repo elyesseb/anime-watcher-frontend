@@ -35,7 +35,6 @@ export class AnimeDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.currentAnime = data;
-          console.log(data);
         },
         error => {
           console.log(error);

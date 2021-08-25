@@ -33,10 +33,10 @@ const routes: Routes = [
   { path: 'animes/:id', component: AnimeDetailsComponent },
   { path: 'add', component: AddAnimeComponent },
   { path: 'images/:id', component: UploadImagesComponent },
-  {path: 'animes-details', component: AnimeDetailsComponent}
+  { path: 'animes-details', component: AnimeDetailsComponent}
   ]},
   {path: 'notfound', component: PageNotFoundComponent},
-  { path:'**', redirectTo:'/not-found'}
+  { path:'**', redirectTo:'notfound'}
 ];
 
 @NgModule({

@@ -45,18 +45,6 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  refreshList(): void {
-    this.retrieveAnimes();
-    this.currentAnime = {};
-    this.currentIndex = -1;
-  }
-
-  setActiveAnime(anime: Anime, index: number): void {
-    this.currentAnime = anime;
-    this.currentIndex = index;
-  }
-
-
   searchTitle(): void {
     this.currentAnime = {};
     this.currentIndex = -1;
