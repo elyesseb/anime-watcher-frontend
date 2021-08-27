@@ -18,29 +18,13 @@ import { BoardModeratorComponent } from './components/board-moderator/board-mode
 import { BoardUserComponent } from './components/board-user/board-user.component';
 
 import { authInterceptorProviders } from './interceptors/auth.interceptor';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatListModule } from '@angular/material/list';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeDetailsComponent } from './components/home-details/home-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
-const materialModules = [
-  MatCardModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatProgressBarModule,
-  MatListModule
-];
 
 @NgModule({
   declarations: [
@@ -73,9 +57,9 @@ const materialModules = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NoopAnimationsModule,
-    ...materialModules
+    NgxPaginationModule,
   ],
+
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

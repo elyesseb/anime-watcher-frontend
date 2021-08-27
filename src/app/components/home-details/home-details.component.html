@@ -17,33 +17,18 @@
                             <img src="http://localhost:8080/files/{{currentAnime.fileDB.id}}" alt="{{currentAnime.title}}" style="width: 100%; max-width:500px;">
                         </div>
                         <div class="col-sm-6 fiche_info_div">
-                            <p class="fiche_info_p">Genres : {{currentAnime.genre}}</p>
+                            <p class="fiche_info_p">Genres : {{genre}}</p>
                             <p>Synopsis :</p>
                             <div class="synopsis">
                                 <p>{{currentAnime.synopsis}}</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-
-                    </div>
-
-                    <div class="row">
-                        <div style="margin: 20px; text-align: center;">
-
-                            <div class="p2w-wrapper">
-                                <input id="tmdb_id" type="hidden" value="745980">
-                                <input id="extension_title" type="hidden" value="Louloute">
-                            </div>
-
+                    <div class="panel-body hred" id="commentaires" *ngFor="let comment of comments">
+                        <div class="row">
+                            <p>Par <b>{{comment.username}}</b> le {{comment.post_date}}</p>
                         </div>
-                    </div>
-                    <div class="row" id="commentaires">
-                        <!-- TODO -->
-                        <div *ngIf="isLoggedIn">
-                            <p>Wesh</p>
-                        </div>
+                        <p class="content-text">{{comment.message}}</p>
                     </div>
                 </div>
             </div>

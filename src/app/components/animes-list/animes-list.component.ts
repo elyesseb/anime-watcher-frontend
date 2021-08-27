@@ -15,14 +15,39 @@ export class AnimesListComponent implements OnInit {
   currentIndex = -1;
   title: string = '';
 
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pageSizes = [3, 6, 9];
+
   constructor(private animeService: AnimeService) { }
 
   ngOnInit(): void {
     this.retrieveAnimes();
   }
 
+  getRequestParams(searchTitle: string, page: number, pageSize: number): any {
+    let params: any = {};
+
+    if (searchTitle) {
+      params[`title`] = searchTitle;
+    }
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
+
   retrieveAnimes(): void {
-    this.animeService.getAll()
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+
+    this.animeService.getAll(params)
       .subscribe(
         data => {
           this.animes = data;

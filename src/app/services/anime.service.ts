@@ -13,8 +13,8 @@ export class AnimeService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Anime[]> {
-    return this.http.get<Anime[]>(`${baseUrl}/list`);
+  getAll(params:any): Observable<Anime[]> {
+    return this.http.get<Anime[]>(`${baseUrl}/list`, { params });
   }
 
   get(id: any): Observable<any> {
