@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-6">
-        <h4>Animes List</h4>
+        <h4>Liste d'animes</h4>
         <ul class="list-group">
             <li class="list-group-item container-cards hover" *ngFor="
             let anime of animes | paginate : {
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-6">
         <div *ngIf="currentAnime.id">
-            <h4>Anime</h4>
+            <h4>Info</h4>
             <div class="list-group-item container-cards">
                 <div>
                     <label><strong>Titre:</strong></label> {{ currentAnime.title }}

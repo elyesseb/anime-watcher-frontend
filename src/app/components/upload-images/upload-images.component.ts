@@ -34,6 +34,7 @@ export class UploadImagesComponent implements OnInit {
     private animeService: AnimeService,
     private uploadService: FileUploadService,
     private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +79,9 @@ export class UploadImagesComponent implements OnInit {
                 this.progress = Math.round((100 * event.loaded) / event.total);
               } else if (event instanceof HttpResponse) {
                 this.message = "L'image a bien été ajouter";
+                setTimeout(() => {
+                  this.router.navigate(['/animes']);
+                }, 2000);
                 this.fileInfos = this.uploadService.getFiles();
                 console.log(this.fileInfos);
               }

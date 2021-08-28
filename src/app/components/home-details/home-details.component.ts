@@ -77,7 +77,6 @@ export class HomeDetailsComponent implements OnInit {
           this.currentAnime = data;
           this.genre = this.currentAnime.genre?.replace(/[^a-zA-Z ]/g, "");
           this.synopsis = this.currentAnime.synopsis?.replace('[Written by MAL Rewrite]','');
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -89,7 +88,6 @@ export class HomeDetailsComponent implements OnInit {
     .subscribe(
       data => {
         this.comments = data;
-        console.log(data);
       },
       error => {
         console.log(error);
@@ -101,12 +99,11 @@ export class HomeDetailsComponent implements OnInit {
 
     this.commentService.create(this.comment.message, this.currentAnime.id).subscribe(
       (response) => {
-        console.log(response);
         this.submitted = true;
         setTimeout(() => {
 
           window.location.reload();
-        }, 1500);
+        }, 2000);
       },
       (error) => {
         console.log(error);

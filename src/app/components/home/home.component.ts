@@ -97,7 +97,6 @@ export class HomeComponent implements OnInit {
           this.animes[i].genre = this.animes[i].genre?.replace(/[^a-zA-Z ]/g, "");
           this.animes[i].title = this.animes[i].title?.replace(/[^a-zA-Z^0-9 ]/g, "");
         }
-        console.log(data);
       },
       (error) => {
         console.log(error);

@@ -17,7 +17,9 @@ export class AnimesListComponent implements OnInit {
 
   page = 1;
   count = 0;
-  pageSize = 30;
+  pageSize = 15;
+
+  message = 'no anime found containing the name : ';
 
   constructor(private animeService: AnimeService) { }
 
@@ -71,10 +73,13 @@ export class AnimesListComponent implements OnInit {
   searchTitle(): void {
     this.currentAnime = {};
     this.currentIndex = -1;
-
     this.animeService.findByTitle(this.title)
       .subscribe(
         data => {
+          if(data.length == 0) {
+            alert(this.message + this.title);
+            this.refreshList();
+          }
           this.animes = data;
           console.log(data);
         },

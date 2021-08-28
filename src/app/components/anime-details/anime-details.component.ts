@@ -49,6 +49,9 @@ export class AnimeDetailsComponent implements OnInit {
         response => {
           console.log(response);
           this.message = response.message ? response.message : 'Cet anime a été mis à jour avec succès !';
+          setTimeout(() => {
+            this.router.navigate(['/animes']);
+          }, 2000);
         },
         error => {
           console.log(error);
@@ -60,7 +63,10 @@ export class AnimeDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/animes']);
+          this.message = 'Cet anime a été supprimer !';
+          setTimeout(() => {
+            this.router.navigate(['/animes']);
+          }, 2000);
         },
         error => {
           console.log(error);
