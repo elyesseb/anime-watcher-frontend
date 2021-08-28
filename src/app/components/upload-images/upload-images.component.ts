@@ -92,7 +92,7 @@ export class UploadImagesComponent implements OnInit {
               if (err.error && err.error.responseMessage) {
                 this.errorMsg = err.error.responseMessage;
               } else {
-                this.errorMsg = 'Error occurred while uploading a file!';
+                this.errorMsg = "Une erreur s'est produite lors du téléchargement du fichier !";
               }
 
               this.currentFile = undefined;
