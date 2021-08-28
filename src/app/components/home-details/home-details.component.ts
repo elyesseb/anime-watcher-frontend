@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Anime } from 'src/app/models/anime.model';
+import { Comment } from 'src/app/models/comment.model';
 import { AnimeService } from 'src/app/services/anime.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { UserService } from 'src/app/services/user.service';
@@ -25,6 +26,7 @@ export class HomeDetailsComponent implements OnInit {
   }
 
   genre?:any;
+  synopsis?:any;
 
   fileDB?: any;
   content: any;
@@ -32,6 +34,12 @@ export class HomeDetailsComponent implements OnInit {
   private roles: string[] = [];
   username?: string;
   comments?: any;
+
+  comment: Comment = {
+    message: ''
+  };
+
+  submitted = false;
 
   constructor(private animeService: AnimeService,
     private userService:UserService,
@@ -60,7 +68,6 @@ export class HomeDetailsComponent implements OnInit {
       this.roles = user.roles;
       this.username = user.username;
     }
-
   }
 
   getAnime(id: any): void {
@@ -69,6 +76,7 @@ export class HomeDetailsComponent implements OnInit {
         data => {
           this.currentAnime = data;
           this.genre = this.currentAnime.genre?.replace(/[^a-zA-Z ]/g, "");
+          this.synopsis = this.currentAnime.synopsis?.replace('[Written by MAL Rewrite]','');
           console.log(data);
         },
         error => {
@@ -87,6 +95,19 @@ export class HomeDetailsComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  saveComment(): void {
+
+    this.commentService.create(this.comment.message, this.currentAnime.id).subscribe(
+      (response) => {
+        console.log(response);
+        this.submitted = true;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }

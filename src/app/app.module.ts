@@ -24,7 +24,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeDetailsComponent } from './components/home-details/home-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { NgxSpinnerModule } from "ngx-spinner";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgxSpinnerModule,
+    NoopAnimationsModule,
   ],
 
   providers: [authInterceptorProviders],

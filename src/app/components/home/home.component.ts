@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Anime } from 'src/app/models/anime.model';
 import { AnimeService } from 'src/app/services/anime.service';
 import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -19,11 +20,11 @@ export class HomeComponent implements OnInit {
   page = 1;
   count = 0;
   pageSize = 30;
-  pageSizes = [15, 30, 45];
 
   constructor(
     private userService: UserService,
-    private animeService: AnimeService
+    private animeService: AnimeService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -34,9 +35,19 @@ export class HomeComponent implements OnInit {
       (err) => {
         this.content = JSON.parse(err.error).message;
       }
-    );
-    this.retrieveAnimes();
-  }
+      );
+
+      this.retrieveAnimes();
+
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 2 seconds */
+      this.spinner.hide();
+    }, 1500);
+
+}
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
     let params: any = {};
@@ -64,6 +75,7 @@ export class HomeComponent implements OnInit {
         this.animes = response;
         for (let i = 0; i < this.animes.length; i++) {
           this.animes[i].genre = this.animes[i].genre?.replace(/[^a-zA-Z ]/g, "");
+          this.animes[i].title = this.animes[i].title?.replace(/[^a-zA-Z ]/g, "");
         }
 
       },
@@ -76,12 +88,14 @@ export class HomeComponent implements OnInit {
   searchTitle(): void {
     this.currentAnime = {};
     this.currentIndex = -1;
+    this.page = 1;
 
     this.animeService.findByTitle(this.title).subscribe(
       (data) => {
         this.animes = data;
         for (let i = 0; i < this.animes.length; i++) {
           this.animes[i].genre = this.animes[i].genre?.replace(/[^a-zA-Z ]/g, "");
+          this.animes[i].title = this.animes[i].title?.replace(/[^a-zA-Z^0-9 ]/g, "");
         }
         console.log(data);
       },
@@ -93,6 +107,7 @@ export class HomeComponent implements OnInit {
 
   handlePageChange(event: number): void {
     this.page = event;
+    window.scroll(0,0);
     this.retrieveAnimes();
   }
 

@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-
+    <ngx-spinner></ngx-spinner>
     <div class="col-lg-4 col-md-6 without_padding" *ngFor="let anime of animes | paginate : {
       itemsPerPage: pageSize,
       currentPage: page,
@@ -40,5 +40,5 @@ let i = index
     </div>
 
     <div class="col-md-12 pagecolor">
-        <pagination-controls class="pagination" previousLabel="Prev" nextLabel="Next" [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+        <pagination-controls class="pagination" previousLabel="" nextLabel="" [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
     </div>

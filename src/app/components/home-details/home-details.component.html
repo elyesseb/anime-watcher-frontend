@@ -20,16 +20,45 @@
                             <p class="fiche_info_p">Genres : {{genre}}</p>
                             <p>Synopsis :</p>
                             <div class="synopsis">
-                                <p>{{currentAnime.synopsis}}</p>
+                                <p>{{synopsis}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-body hred" id="commentaires" *ngFor="let comment of comments">
+
+                    <!-- COMMENT ADD-->
+                    <div class="panel-body">
+                        <div *ngIf="isLoggedIn">
+                            <div>
+                                <h3 class="pull-left mt-4">Ajouter un commentaire</h3>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                            <textarea class="form-control" id="message" placeholder="Votre message" required [(ngModel)]="comment.message"></textarea>
+                                            <button class="btn btn-primary btn-sm mt-4" (click)="saveComment()">Envoyer</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div *ngIf="submitted">
+                                <h4>Votre commentaire a bien été enregistrer</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- COMMENT ADD-->
+                    <!-- COMMENT RETRIEVE-->
+                    <div class="panel-body hred" *ngFor="let comment of comments">
                         <div class="row">
                             <p>Par <b>{{comment.username}}</b> le {{comment.post_date}}</p>
                         </div>
                         <p class="content-text">{{comment.message}}</p>
                     </div>
+                    <!-- COMMENT RETRIEVE-->
+                    <!-- COMMENT NOTLOG-->
+                    <div *ngIf="!isLoggedIn">
+                        <p>Vous devez être membre pour ajouter un commentaire, <a [routerLink]="['/register']">inscrivez-vous !</a>
+                        </p>
+                    </div>
+                    <!-- COMMENT NOTLOG-->
                 </div>
             </div>
         </div>

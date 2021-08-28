@@ -27,3 +27,28 @@ body {
 .container-cards {
     background-image: url("assets/dark_mosaic.png");
 }
+
+.ngx-pagination {
+    padding-top: 1rem!important;
+    color: #000!important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+    background: #0D2333 !important;
+    color: #fff!important;
+}
+
+.ngx-pagination .current {
+    color: #fff!important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+    color: #fff!important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+    color: #000!important;
+}
