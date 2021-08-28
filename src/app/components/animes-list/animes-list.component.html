@@ -9,10 +9,22 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-12">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+    </div>
+
     <div class="col-md-6">
         <h4>Animes List</h4>
         <ul class="list-group">
-            <li class="list-group-item container-cards hover" *ngFor="let anime of animes; let i = index" [class.active]="i == currentIndex" (click)="setActiveAnime(anime, i)">
+            <li class="list-group-item container-cards hover" *ngFor="
+            let anime of animes | paginate : {
+                    itemsPerPage: pageSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index
+          " [class.active]="i == currentIndex" (click)="setActiveAnime(anime, i)">
                 {{ anime.title }}
             </li>
         </ul>

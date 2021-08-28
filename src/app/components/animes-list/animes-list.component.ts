@@ -10,15 +10,14 @@ import { AnimeService } from 'src/app/services/anime.service';
 })
 export class AnimesListComponent implements OnInit {
 
-  animes?: Anime[];
+  animes: Anime[] = [];
   currentAnime: Anime = {};
   currentIndex = -1;
   title: string = '';
 
   page = 1;
   count = 0;
-  pageSize = 3;
-  pageSizes = [3, 6, 9];
+  pageSize = 30;
 
   constructor(private animeService: AnimeService) { }
 
@@ -82,5 +81,16 @@ export class AnimesListComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveAnimes();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveAnimes();
   }
 }

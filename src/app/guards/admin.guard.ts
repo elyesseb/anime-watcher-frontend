@@ -26,17 +26,15 @@ export class AdminGuard implements CanActivate {
           return true;
 
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['notfound']);
           return false;
         }
       }
 
       if (result === admin) {
-        console.log('ok');
         return true;
       } else {
-        console.log('Nok');
-        this.router.navigate(['/']);
+        this.router.navigate(['notfound']);
         return false;
       }
     }

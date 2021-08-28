@@ -103,6 +103,10 @@ export class HomeDetailsComponent implements OnInit {
       (response) => {
         console.log(response);
         this.submitted = true;
+        setTimeout(() => {
+
+          window.location.reload();
+        }, 1500);
       },
       (error) => {
         console.log(error);
