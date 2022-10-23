@@ -1,0 +1,36 @@
+<form>
+    <div>
+        <div class="submit-form col-md-12 pt-3">
+            <div *ngIf="!submitted">
+                <div class="col-md-12 container-cards p-3">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="title">Saison</label>
+                            <input type="text" class="form-control" id="season" required [(ngModel)]="episode.season" name="season" ngModel required />
+                        </div>
+                        <div class="form-group col">
+                            <label for="episodeNb">Numéros de l'épisode</label>
+                            <input class="form-control" id="episodeNb" required [(ngModel)]="episode.episodeNb" name="episodeNb" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="aired">Date de sortie</label>
+                            <input class="form-control" id="aired" required [(ngModel)]="episode.aired" name="aired" />
+                        </div>
+                        <div class="form-group col">
+                            <label for="anime_id">Numéros de l'anime</label>
+                            <input class="form-control" id="anime_id" required [(ngModel)]="episode.anime_id" name="anime_id" />
+                        </div>
+                    </div>
+                    <button (click)="saveEpisode()" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+
+            <div *ngIf="submitted">
+                <h4 class="alert alert-success" role="alert">L'episode a été ajouter avec succès !</h4>
+                <button class="btn btn-success" (click)="newEpisode()">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</form>

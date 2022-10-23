@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Anime } from 'src/app/models/anime.model';
 import { Comment } from 'src/app/models/comment.model';
@@ -10,10 +10,9 @@ import { TokenStorageService } from '../../services/token-storage.service';
 @Component({
   selector: 'app-home-details',
   templateUrl: './home-details.component.html',
-  styleUrls: ['./home-details.component.scss']
+  styleUrls: ['./home-details.component.scss'],
 })
 export class HomeDetailsComponent implements OnInit {
-
   currentAnime: Anime = {
     id: '',
     title: '',
@@ -23,10 +22,10 @@ export class HomeDetailsComponent implements OnInit {
     ended: '',
     rating: '',
     fileDB: '',
-  }
+  };
 
-  genre?:any;
-  synopsis?:any;
+  genre?: any;
+  synopsis?: any;
 
   fileDB?: any;
   content: any;
@@ -36,17 +35,20 @@ export class HomeDetailsComponent implements OnInit {
   comments?: any;
 
   comment: Comment = {
-    message: ''
+    message: '',
   };
 
   submitted = false;
+  @Input() anime_id: any;
 
-  constructor(private animeService: AnimeService,
-    private userService:UserService,
+  constructor(
+    private animeService: AnimeService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private tokenStorageService: TokenStorageService,
-    private commentService:CommentService,
-    private router: Router) { }
+    private commentService: CommentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe(
@@ -68,42 +70,20 @@ export class HomeDetailsComponent implements OnInit {
       this.roles = user.roles;
       this.username = user.username;
     }
+    this.anime_id = this.route.snapshot.params.id;
   }
 
   getAnime(id: any): void {
-    this.animeService.get(id)
-      .subscribe(
-        data => {
-          this.currentAnime = data;
-          this.genre = this.currentAnime.genre?.replace(/[^a-zA-Z ]/g, "");
-          this.synopsis = this.currentAnime.synopsis?.replace('[Written by MAL Rewrite]','');
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  getComment(id: any): void {
-    this.commentService.get(id)
-    .subscribe(
-      data => {
-        this.comments = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  saveComment(): void {
-
-    this.commentService.create(this.comment.message, this.currentAnime.id).subscribe(
-      (response) => {
-        this.submitted = true;
-        setTimeout(() => {
-
-          window.location.reload();
-        }, 2000);
+    this.animeService.get(id).subscribe(
+      (data) => {
+        console.log(data);
+        
+        this.currentAnime = data;
+        this.genre = this.currentAnime.genre?.replace(/[^a-zA-Z ]/g, '');
+        this.synopsis = this.currentAnime.synopsis?.replace(
+          '[Written by MAL Rewrite]',
+          ''
+        );
       },
       (error) => {
         console.log(error);
@@ -111,4 +91,30 @@ export class HomeDetailsComponent implements OnInit {
     );
   }
 
+  getComment(id: any): void {
+    this.commentService.get(id).subscribe(
+      (data) => {
+        this.comments = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  saveComment(): void {
+    this.commentService
+      .create(this.comment.message, this.currentAnime.id)
+      .subscribe(
+        (response) => {
+          this.submitted = true;
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }

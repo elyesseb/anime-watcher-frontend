@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-1">
-                            <img src="http://localhost:8080/files/{{currentAnime.fileDB.id}}" alt="{{currentAnime.title}}" style="width: 100%; max-width:500px;">
+                            <img src="https://snk-api.azurewebsites.net/files/{{currentAnime.fileDB.id}}" alt="{{currentAnime.title}}" style="width: 100%; max-width:500px;">
                         </div>
                         <div class="col-sm-6 fiche_info_div">
                             <p class="fiche_info_p">Genres : {{genre}}</p>
@@ -23,13 +23,18 @@
                                 <p>{{synopsis}}</p>
                             </div>
                         </div>
+                        <div class="col-sm-4 col-sm-offset-1 mt-3">
+                            <a routerLink="/home/list-episodes/{{ anime_id }}">
+                                <button class="btn btn-primary w-100">Voir tout les episodes</button>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- COMMENT ADD-->
                     <div class="panel-body">
                         <div *ngIf="isLoggedIn">
                             <div>
-                                <h3 class="pull-left mt-4">Ajouter un commentaire</h3>
+                                <h3 class="pull-left mt-4 ">Ajouter un commentaire</h3>
                                 <fieldset>
                                     <div class="row">
                                         <div class="form-group col-xs-12 col-sm-9 col-lg-10">

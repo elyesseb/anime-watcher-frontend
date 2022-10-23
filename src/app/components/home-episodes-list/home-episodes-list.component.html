@@ -1,0 +1,32 @@
+<div id="page-wrapper">
+    <section class="fiche panel panel-s4i">
+        <div class="panel-body">
+            <div class="panel-body">
+                <div id="dle-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>Episodes :</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" *ngFor="let episode of episodes">
+                            <a routerLink="/home/episode/{{episode.episodeNb}}" class="list-group-item list-group-item-action">
+                                {{episode.season < 10 ? "S0" + episode.season : episode.season}} {{episode.episodeNb < 10 ? "E0" + episode.episodeNb : episode.episodeNb}} <span class="badge badge-danger float-right mt-1">{{episode.aired}}</span>
+                            </a>
+                        </div>
+                        <div *ngIf="episodes.length === 0">
+                            <div class="row d-flex align-center">
+                                <div class="col-sm-12">
+                                    <h4 class=" alert alert-warning ml-center" role="alert">Bientôt disponible...</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a routerLink="/home" class="btn btn-success">Revenir a l'accueil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

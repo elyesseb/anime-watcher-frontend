@@ -15,32 +15,50 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { HomeDetailsComponent } from './components/home-details/home-details.component';
+import { CguComponent } from './components/cgu/cgu.component';
+import { HomeEpisodesListComponent } from './components/home-episodes-list/home-episodes-list';
+import { HomeEpisodeDetailsComponent } from './components/home-episode-details/home-episode-details.component';
+import { AddEpisodeComponent } from './components/add-episode/add-episode.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'home/:id', component: HomeDetailsComponent},
+  { path: 'home/:id', component: HomeDetailsComponent },
+  { path: 'home/list-episodes/:id', component: HomeEpisodesListComponent },
+  { path: 'home/episode/:id', component: HomeEpisodeDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', canActivate : [AuthGuard] , children : [
-  { path: 'profile', component: ProfileComponent }
-  // { path: 'user', component: BoardUserComponent },
-  ]},
+  { path: 'cgu', component: CguComponent },
+  // User
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'profile', component: ProfileComponent },
+      // { path: 'user', component: BoardUserComponent },
+    ],
+  },
   // { path: 'mod', component: BoardModeratorComponent }
-  { path: '', canActivate : [AdminGuard] , children : [
-  { path: 'admin', component: BoardAdminComponent},
-  { path: 'animes', component: AnimesListComponent },
-  { path: 'animes/:id', component: AnimeDetailsComponent },
-  { path: 'add', component: AddAnimeComponent },
-  { path: 'images/:id', component: UploadImagesComponent },
-  { path: 'animes-details', component: AnimeDetailsComponent}
-  ]},
-  {path: 'notfound', component: PageNotFoundComponent},
-  { path:'**', redirectTo:'notfound'}
+  // Admin
+  {
+    path: '',
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'admin', component: BoardAdminComponent },
+      { path: 'animes', component: AnimesListComponent },
+      { path: 'animes/:id', component: AnimeDetailsComponent },
+      { path: 'add-anime', component: AddAnimeComponent },
+      { path: 'add-episode', component: AddEpisodeComponent },
+      { path: 'images/:id', component: UploadImagesComponent },
+      { path: 'animes-details', component: AnimeDetailsComponent },
+    ],
+  },
+  { path: 'notfound', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'notfound' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -3,7 +3,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080/comment';
+const baseUrl = 'https://snk-api.azurewebsites.net/comment';
 
 @Injectable({
   providedIn: 'root'

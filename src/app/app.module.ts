@@ -24,8 +24,19 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeDetailsComponent } from './components/home-details/home-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CguComponent } from './components/cgu/cgu.component';
+import {
+  RECAPTCHA_SETTINGS,
+  RecaptchaFormsModule,
+  RecaptchaModule,
+  RecaptchaSettings,
+} from 'ng-recaptcha';
+import { environment } from 'src/environments/environment';
+import { HomeEpisodesListComponent } from './components/home-episodes-list/home-episodes-list';
+import { HomeEpisodeDetailsComponent } from './components/home-episode-details/home-episode-details.component';
+import { AddEpisodeComponent } from './components/add-episode/add-episode.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +62,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     PageNotFoundComponent,
     FooterComponent,
     HomeDetailsComponent,
+    CguComponent,
+    HomeEpisodesListComponent,
+    HomeEpisodeDetailsComponent,
+    AddEpisodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,9 +76,22 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     NgxSpinnerModule,
     NoopAnimationsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
 
-  providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  providers: [
+    authInterceptorProviders,
+    [
+      {
+        provide: RECAPTCHA_SETTINGS,
+        useValue: {
+          siteKey: environment.recaptcha.siteKey,
+        } as RecaptchaSettings,
+      },
+    ],
+  ],
+
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

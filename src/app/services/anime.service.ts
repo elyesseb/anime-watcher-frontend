@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Anime } from '../models/anime.model';
 
 
-const baseUrl = 'http://localhost:8080/anime';
+const baseUrl = 'https://snk-api.azurewebsites.net/anime';
 
 @Injectable({
   providedIn: 'root'

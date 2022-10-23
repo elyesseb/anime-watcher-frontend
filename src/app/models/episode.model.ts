@@ -1,7 +1,7 @@
 export class Episode {
   id?: any;
-  season?: number;
-  episodeNb?: number;
-  aired?: string;
-  anime?: any;
+  season?: any;
+  episodeNb?: any;
+  aired?: any;
+  anime_id?: any;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Anime } from 'src/app/models/anime.model';
 import { AnimeService } from 'src/app/services/anime.service';
 import { UserService } from 'src/app/services/user.service';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   currentIndex = -1;
   title: string = '';
   fileDB?: any;
+  anime_id: any;
 
   page = 1;
   count = 0;
@@ -35,19 +36,18 @@ export class HomeComponent implements OnInit {
       (err) => {
         this.content = JSON.parse(err.error).message;
       }
-      );
+    );
 
-      this.retrieveAnimes();
+    this.retrieveAnimes();
 
     /** spinner starts on init */
     this.spinner.show();
-
+    this.anime_id = this.currentAnime.id;
     setTimeout(() => {
       /** spinner ends after 2 seconds */
       this.spinner.hide();
     }, 1500);
-
-}
+  }
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
     let params: any = {};
@@ -71,13 +71,18 @@ export class HomeComponent implements OnInit {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
 
     this.animeService.getAll(params).subscribe(
-      response => {
+      (response) => {
         this.animes = response;
         for (let i = 0; i < this.animes.length; i++) {
-          this.animes[i].genre = this.animes[i].genre?.replace(/[^a-zA-Z ]/g, "");
-          this.animes[i].title = this.animes[i].title?.replace(/[^a-zA-Z ]/g, "");
+          this.animes[i].genre = this.animes[i].genre?.replace(
+            /[^a-zA-Z ]/g,
+            ''
+          );
+          this.animes[i].title = this.animes[i].title?.replace(
+            /[^a-zA-Z ]/g,
+            ''
+          );
         }
-
       },
       (error) => {
         console.log(error);
@@ -94,8 +99,14 @@ export class HomeComponent implements OnInit {
       (data) => {
         this.animes = data;
         for (let i = 0; i < this.animes.length; i++) {
-          this.animes[i].genre = this.animes[i].genre?.replace(/[^a-zA-Z ]/g, "");
-          this.animes[i].title = this.animes[i].title?.replace(/[^a-zA-Z^0-9 ]/g, "");
+          this.animes[i].genre = this.animes[i].genre?.replace(
+            /[^a-zA-Z ]/g,
+            ''
+          );
+          this.animes[i].title = this.animes[i].title?.replace(
+            /[^a-zA-Z^0-9 ]/g,
+            ''
+          );
         }
       },
       (error) => {
@@ -106,7 +117,7 @@ export class HomeComponent implements OnInit {
 
   handlePageChange(event: number): void {
     this.page = event;
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.retrieveAnimes();
   }
 
@@ -115,5 +126,4 @@ export class HomeComponent implements OnInit {
     this.page = 1;
     this.retrieveAnimes();
   }
-
 }
