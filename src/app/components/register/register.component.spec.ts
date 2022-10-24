@@ -64,7 +64,6 @@ describe('RegisterComponent', () => {
   });
 
   it('Write username input', () => {
-    console.log(spectatorComponent);
     const input = spectatorComponent.query('#username') as HTMLInputElement;
     expect(input).toExist();
     // spectatorComponent.typeInElement('Lu', input);

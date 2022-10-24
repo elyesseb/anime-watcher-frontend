@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     username: {
       required: false,
       minlength: false,
-      maxlength: false
+      maxlength: false,
     },
     // email: null,
     // password: null,
@@ -33,28 +33,23 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.form.email);
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     const { username, email, password } = this.form;
 
-    this.authService
-      .register(username, email, password)
-      .subscribe(
-        (data) => {
-          console.log(data);          
-          this.isSuccessful = true;
-          this.isSignUpFailed = false;
-          this.NavigateToLogin();
-        },
-        (err) => {
-          console.log(err);
-          this.errorMessage = err.error.message;
-          this.isSignUpFailed = true;
-        }
-      );
+    this.authService.register(username, email, password).subscribe(
+      (data) => {
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.NavigateToLogin();
+      },
+      (err) => {
+        console.error(err);
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
   NavigateToLogin(): void {
     setTimeout(() => {

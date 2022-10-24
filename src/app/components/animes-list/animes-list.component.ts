@@ -52,10 +52,10 @@ export class AnimesListComponent implements OnInit {
       .subscribe(
         data => {
           this.animes = data;
-          console.log(data);
+          
         },
         error => {
-          console.log(error);
+          console.error(error);
         });
   }
 
@@ -81,10 +81,10 @@ export class AnimesListComponent implements OnInit {
             this.refreshList();
           }
           this.animes = data;
-          console.log(data);
+          
         },
         error => {
-          console.log(error);
+          console.error(error);
         });
   }
 

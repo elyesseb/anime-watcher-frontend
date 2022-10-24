@@ -34,12 +34,11 @@ export class AddAnimeComponent implements OnInit {
     };
 
     this.animeService.create(data).subscribe(
-      (response) => {
-        console.log(response);
+      () => {
         this.submitted = true;
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

@@ -36,10 +36,9 @@ export class HomeEpisodesListComponent implements OnInit {
     this.episodeService.getAll(id).subscribe(
       (data) => {
         this.episodes = data;
-        console.log(data);
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

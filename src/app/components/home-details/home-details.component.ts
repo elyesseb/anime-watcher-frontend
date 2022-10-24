@@ -76,7 +76,7 @@ export class HomeDetailsComponent implements OnInit {
   getAnime(id: any): void {
     this.animeService.get(id).subscribe(
       (data) => {
-        console.log(data);
+        
         
         this.currentAnime = data;
         this.genre = this.currentAnime.genre?.replace(/[^a-zA-Z ]/g, '');
@@ -86,7 +86,7 @@ export class HomeDetailsComponent implements OnInit {
         );
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }
@@ -97,7 +97,7 @@ export class HomeDetailsComponent implements OnInit {
         this.comments = data;
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }
@@ -113,7 +113,7 @@ export class HomeDetailsComponent implements OnInit {
           }, 2000);
         },
         (error) => {
-          console.log(error);
+          console.error(error);
         }
       );
   }

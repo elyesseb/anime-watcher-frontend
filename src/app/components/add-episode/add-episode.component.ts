@@ -30,12 +30,11 @@ export class AddEpisodeComponent implements OnInit {
     };
 
     this.episodeService.add(this.episode.anime_id, data).subscribe(
-      (response) => {
-        console.log(response);
+      () => {
         this.submitted = true;
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

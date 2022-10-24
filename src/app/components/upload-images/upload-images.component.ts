@@ -12,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./upload-images.component.scss'],
 })
 export class UploadImagesComponent implements OnInit {
-
   currentAnime: Anime = {
     title: '',
     genre: '',
@@ -46,10 +45,9 @@ export class UploadImagesComponent implements OnInit {
     this.animeService.get(id).subscribe(
       (data) => {
         this.currentAnime = data;
-        console.log(data);
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }
@@ -68,9 +66,6 @@ export class UploadImagesComponent implements OnInit {
       if (file) {
         this.currentFile = file;
 
-        console.log(this.currentFile);
-        console.log(this.currentAnime.id);
-
         this.uploadService
           .upload(this.currentFile, this.currentAnime.id)
           .subscribe(
@@ -83,16 +78,16 @@ export class UploadImagesComponent implements OnInit {
                   this.router.navigate(['/animes']);
                 }, 2000);
                 this.fileInfos = this.uploadService.getFiles();
-                console.log(this.fileInfos);
               }
             },
             (err: any) => {
-              console.log(err);
+              console.error(err);
 
               if (err.error && err.error.responseMessage) {
                 this.errorMsg = err.error.responseMessage;
               } else {
-                this.errorMsg = "Une erreur s'est produite lors du téléchargement du fichier !";
+                this.errorMsg =
+                  "Une erreur s'est produite lors du téléchargement du fichier !";
               }
 
               this.currentFile = undefined;
