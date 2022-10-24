@@ -42,7 +42,9 @@
                 </div>
             </div>
             <div class="form-group mt-3">
-                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.recaptcha" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <div class="g-recaptcha">
+                    <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="form.recaptcha" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                </div>
                 <div class="alert-danger p-1" *ngIf="recaptcha.errors && f.submitted">
                     <div *ngIf="recaptcha.errors.required">Le captcha est requis.</div>
                 </div>

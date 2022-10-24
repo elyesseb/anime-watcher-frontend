@@ -30,3 +30,32 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 440px) {
+  .g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .g-recaptcha {
+    transform: scale(0.75);
+    transform-origin: 0 0;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .g-recaptcha {
+    transform: scale(0.55);
+    transform-origin: 0 0;
+  }
+}
+
+@media only screen and (min-width: 450px) {
+  .g-recaptcha {
+    transform: scale(1.05);
+    transform-origin: 0 0;
+  }
+}
+
