@@ -39,12 +39,12 @@ export class HomeComponent implements OnInit {
     );
     this.retrieveAnimes();
     /** spinner starts on init */
-    this.spinner.show();
-    setTimeout(() => {
-      /** spinner ends after 2 seconds */
-      this.spinner.hide();
-    }, 3500);
-    this.anime_id = this.currentAnime.id;
+    // this.spinner.show();
+    // setTimeout(() => {
+    //   /** spinner ends after 2 seconds */
+    //   this.spinner.hide();
+    // }, 3500);
+    // this.anime_id = this.currentAnime.id;
   }
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
@@ -65,7 +65,8 @@ export class HomeComponent implements OnInit {
     return params;
   }
 
-  retrieveAnimes()  {
+  retrieveAnimes() {
+    this.spinner.show();
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
     this.animeService.getAll(params).subscribe(
       (response) => {
@@ -79,6 +80,7 @@ export class HomeComponent implements OnInit {
             /[^a-zA-Z ]/g,
             ''
           );
+          this.spinner.hide();
         }
       },
       (error) => {
