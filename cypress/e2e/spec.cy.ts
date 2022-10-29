@@ -57,5 +57,4 @@ describe('Visitor wants to register', () => {
       .contains('Le captcha est requis.')
       .should('be.visible');
   });
-
 });

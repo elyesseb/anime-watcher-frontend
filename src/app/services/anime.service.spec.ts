@@ -34,22 +34,20 @@ describe('AnimeService', () => {
         rating: 8.2,
       },
     ];
-
     // promise with some spec
     service.get(8916).subscribe((res) => {
       expect(res).toBeTruthy();
       expect(res[0].title).toBe('Naruto');
       expect(res.length).toBe(1);
     });
-
-    // Mock data to this fake api uri
+    // Mock data to this api uri
     const req = httpMock.expectOne(`${baseUrl}/getAnimeById/8916`);
     //Be sure to have GET request method
     expect(req.request.method).toBe('GET');
     req.flush(result);
   });
 
-  it('should', () => {
+  it('should post anime', () => {
     const data = [
       {
         id: 8916,
@@ -66,10 +64,9 @@ describe('AnimeService', () => {
       expect(data).toBeTruthy();
       expect(data.length).toBe(1);
     });
-
-    // Mock data to this fake api uri
+    // Mock data to this api uri
     const req = httpMock.expectOne(`${baseUrl}/add`);
-    //Be sure to have POST request method
+    // Be sure to have POST request method
     expect(req.request.method).toBe('POST');
     req.flush(data);
   });

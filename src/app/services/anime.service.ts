@@ -3,33 +3,31 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Anime } from '../models/anime.model';
 
-
 const baseUrl = 'https://snk-api.azurewebsites.net/anime';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnimeService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getAll(params:any): Observable<Anime[]> {
+  getAll(params: any): Observable<Anime[]> {
     return this.http.get<Anime[]>(`${baseUrl}/list`, { params });
   }
 
-  get(id: any): Observable<any> {
+  get(id: any): Observable<Anime> {
     return this.http.get(`${baseUrl}/getAnimeById/${id}`);
   }
 
-  create(data: any): Observable<any> {
+  create(data: any): Observable<Anime> {
     return this.http.post(`${baseUrl}/add`, data);
   }
 
-  update(id: any, data: any): Observable<any> {
+  update(id: any, data: any): Observable<Anime> {
     return this.http.put(`${baseUrl}/getAnimeById/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: any): Observable<Anime> {
     return this.http.delete(`${baseUrl}/getAnimeById/${id}`);
   }
 

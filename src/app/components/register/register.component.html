@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label for="username">Pseudo</label>
                 <input type="text" class="form-control" name="username" id="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
-                <div class="alert-danger p-1" *ngIf="f.submitted">
+                <div class="alert-danger p-1" *ngIf="username.errors && f.submitted">
                     <div *ngIf="errors.username.required">Le nom d'utilisateur est requis.</div>
                     <div *ngIf="errors.username.minlength" data-cy="username-minlength-error" id="username-minlength-error">
                         Le nom d'utilisateur doit comporter au moins 3 caractères

@@ -24,7 +24,6 @@ export class AdminGuard implements CanActivate {
       for (let i = 0; i < role.length; i++) {
         if(role[i] === admin) {
           return true;
-
         } else {
           this.router.navigate(['notfound']);
           return false;
