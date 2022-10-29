@@ -15,19 +15,19 @@ export class AnimeService {
     return this.http.get<Anime[]>(`${baseUrl}/list`, { params });
   }
 
-  get(id: any): Observable<Anime> {
+  get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/getAnimeById/${id}`);
   }
 
-  create(data: any): Observable<Anime> {
+  create(data: any): Observable<any> {
     return this.http.post(`${baseUrl}/add`, data);
   }
 
-  update(id: any, data: any): Observable<Anime> {
+  update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/getAnimeById/${id}`, data);
   }
 
-  delete(id: any): Observable<Anime> {
+  delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/getAnimeById/${id}`);
   }
 
