@@ -3,13 +3,13 @@
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="username">Pseudo</label>
-                <input type="text" class="form-control" name="username" id="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" />
+                <input type="text" class="form-control" name="username" id="username" [(ngModel)]="form.username" required username minlength="3" maxlength="20" #username="ngModel" />
                 <div class="alert-danger p-1" *ngIf="username.errors && f.submitted">
-                    <div *ngIf="errors.username.required">Le nom d'utilisateur est requis.</div>
-                    <div *ngIf="errors.username.minlength" data-cy="username-minlength-error" id="username-minlength-error">
+                    <div *ngIf="username.errors.required">Le nom d'utilisateur est requis.</div>
+                    <div *ngIf="username.errors.minlength" data-cy="username-minlength-error" id="username-minlength-error">
                         Le nom d'utilisateur doit comporter au moins 3 caractères
                     </div>
-                    <div *ngIf="errors.username.maxlength">
+                    <div *ngIf="username.errors.maxlength">
                         Le nom d'utilisateur doit comporter au maximum 20 caractères
                     </div>
                 </div>
