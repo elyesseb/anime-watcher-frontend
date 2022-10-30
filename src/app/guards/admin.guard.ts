@@ -17,10 +17,9 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-
-      const role = this.token.getUser().roles;
-      const admin = "ROLE_ADMIN";
-      let result = '';
+      // const role = this.token.getUser().roles;
+      // const admin = "ROLE_ADMIN";
+      // let result = '';
       let res;
       this.user.getAdminBoard().subscribe(
         (data) => {
@@ -31,7 +30,7 @@ export class AdminGuard implements CanActivate {
           console.error(err);
         }
       );
-      if(res){
+      if(res === "Admin Board."){
         console.log(res);
         return true;
       } else {
